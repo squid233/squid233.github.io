@@ -6,4 +6,4 @@
 
 ## 2020
  
-[04](https://github.com/squid233/squid233.github.io/2020/04)
+[04](https://squid233.github.io/2020/04/)
