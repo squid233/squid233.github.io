@@ -3,6 +3,8 @@ io.github.squid233.squidcraft.api
 io.github.squid233.squidcraft.armor
 io.github.squid233.squidcraft.block
 io.github.squid233.squidcraft.block.blockItem
+io.github.squid233.squidcraft.block.msb
+io.github.squid233.squidcraft.block.tile
 io.github.squid233.squidcraft.client
 io.github.squid233.squidcraft.client.gui
 io.github.squid233.squidcraft.config
@@ -13,7 +15,6 @@ io.github.squid233.squidcraft.item
 io.github.squid233.squidcraft.item.tools.netherite
 io.github.squid233.squidcraft.item.tools.squid
 io.github.squid233.squidcraft.mixin
-io.github.squid233.squidcraft.tile
 io.github.squid233.squidcraft.util
 io.github.squid233.squidcraft.util.handle
 io.github.squid233.squidcraft.util.registers
