@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"io.github.squid233.squid233slogger","h":"","u":""},{"l":"io.github.squid233.squid233slogger.config","h":"","u":""},{"l":"io.github.squid233.squid233slogger.consolestyle","h":"","u":""},{"l":"io.github.squid233.squid233slogger.logger","h":"","u":""},{"l":"所有程序包","h":"","u":"allpackages-index.html"}]
