@@ -32,7 +32,7 @@ manually at `Settings -> Build, Execution, Deployment -> Compiler -> Java Compil
 
 ![Set the bytecode version](bytecode-ver.png)
 
-You can even set it to another value like 420. I'm not sure what will happen if you do that.
+You can even set it to another value like 420. I’m not sure what will happen if you do that.
 
 ## Step 3. Set Java Toolchain
 

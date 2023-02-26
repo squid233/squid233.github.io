@@ -1,14 +1,16 @@
-# :wave: Hi There
+# Introduce
 
-I'm squid233, a program developer.
+## 👋 Hi There
 
-I'm working on [OverrunGL](https://github.com/Over-Run/overrungl).
+I’m squid233, a program developer.
+
+I’m working on [OverrunGL](https://github.com/Over-Run/overrungl).
 
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Over-Run&repo=overrungl&show_owner=true)](https://github.com/Over-Run/overrungl)
 
 ## Skills
 
-Partial Java and OpenGL.
+Partial Java ☕ and OpenGL.
 
 ## Sharing
 
