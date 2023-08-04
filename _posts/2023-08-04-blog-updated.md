@@ -6,5 +6,3 @@ comments: true
 ---
 
 I have changed the theme of my blog and removed old articles.
-
-{% include disqus_comments.html %}
