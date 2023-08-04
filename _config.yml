@@ -7,7 +7,7 @@ url: "https://squid233.github.io/"
 theme: minima
 
 disqus:
-  shortname:
+  shortname: squid233
 show_excerpts: true
 minima:
   social_links:
