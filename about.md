@@ -16,9 +16,7 @@ I'm working on [OverrunGL](https://github.com/Over-Run/overrungl).
 
 Partial Java ☕, Kotlin, and OpenGL.
 
-## My Blog
-
-See [here](blog/index.md).
+## Sharing
 
 Except where otherwise noted,
 content on this site is licensed under
