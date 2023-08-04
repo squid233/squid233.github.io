@@ -1,3 +1,12 @@
-name: squid233's Blog
+title: squid233's Blog
+author:
+  name: squid233
 description: This is squid233's blog.
 url: "https://squid233.github.io/"
+
+theme: minima
+
+show_excerpts: true
+minima:
+  social_links:
+    - { platform: github, user_url: "https://github.com/squid233" }
