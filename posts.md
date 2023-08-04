@@ -4,8 +4,6 @@ title: Posts
 permalink: /posts/
 ---
 
-<h3>Comments</h3>
-<p>If you didn't see the discussion area, please check your Internet connection, or use <a href="https://github.com/squid233/squid233.github.io/discussions" target="_blank" rel="noopener noreferrer">GitHub discussions</a>.</p>
 <ul>
   {% for post in site.posts %}
     <li>
