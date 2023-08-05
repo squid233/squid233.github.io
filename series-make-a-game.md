@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Make a Game Series
-permalink: /series/make_a_game/
+permalink: /series/make-a-game/
 ---
 
 I just write them down.
@@ -12,4 +12,4 @@ If you have any questions, please use [discussions](https://github.com/squid233/
 
 TODO: Use string template instead of + conjugate string
 
-- [#1 Setup]({% post_url /make_a_game/2023-08-05-make-a-game-1 %})
+- [#1 Setup]({% post_url /make-a-game/2023-08-05-make-a-game-1 %})
