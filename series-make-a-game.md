@@ -10,6 +10,4 @@ The content in these posts might be changed in the future. Please check them bac
 
 If you have any questions, please use [discussions](https://github.com/squid233/squid233.github.io/discussions).
 
-TODO: Use string template instead of + conjugate string
-
 - [#1 Setup]({% post_url /make-a-game/2023-08-05-make-a-game-1 %})
