@@ -9,12 +9,12 @@ since = 2020
 customText = ""
 
 [dateFormat]
-published = "Jan 02, 2006"
-lastUpdated = "Jan 02, 2006 15:04 MST"
+published = "2006-01-02"
+lastUpdated = "2006-01-02 15:04 MST"
 
 [sidebar]
 emoji = "🍥"
-subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+subtitle = "专业挖坑"
 
 [sidebar.avatar]
 enabled = true
@@ -76,7 +76,7 @@ enabled = true
 ## Comments
 [comments]
 enabled = true
-provider = "disqus"
+provider = "giscus"
 
 [comments.disqusjs]
 shortname = ""
@@ -127,15 +127,18 @@ serverName = "cactus.chat"
 siteName = ""
 
 [comments.giscus]
-repo = ""
-repoID = ""
-category = ""
-categoryID = ""
-mapping = ""
-lightTheme = ""
-darkTheme = ""
+repo = "squid233/squid233.github.io"
+repoID = "R_kgDOLqoAOQ"
+category = "Announcements"
+categoryID = "DIC_kwDOLqoAOc4CefsW"
+mapping = "pathname"
+strict = 1
+lightTheme = "light"
+darkTheme = "dark"
 reactionsEnabled = 1
 emitMetadata = 0
+inputPosition = "top"
+lang = "zh-CN"
 
 [comments.gitalk]
 owner = ""

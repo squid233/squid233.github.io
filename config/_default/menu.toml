@@ -15,6 +15,22 @@ url = "https://github.com/squid233"
 [social.params]
 icon = "brand-github"
 
+[[social]]
+identifier = "stackoverflow"
+name = "Stack Overflow"
+url = "https://stackoverflow.com/users/15057809/squid233"
+
+[social.params]
+icon = "brand-stackoverflow"
+
+[[social]]
+identifier = "bilibili"
+name = "哔哩哔哩"
+url = "https://space.bilibili.com/1942954545"
+
+[social.params]
+icon = "brand-bilibili"
+
 # [[social]]
 # identifier = "twitter"
 # name = "Twitter"
