@@ -5,6 +5,6 @@ image: bell.svg
 
 # Badge style
 style:
-    background: "#f92672"
+    background: "#e91e63"
     color: "#fff"
 ---
