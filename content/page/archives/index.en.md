@@ -1,5 +1,5 @@
 ---
-title: "归档"
+title: "Archives"
 date: 2024-04-06
 layout: "archives"
 slug: "archives"

@@ -1,5 +1,5 @@
 ---
-title: "友链"
+title: "リンク"
 slug: links
 links:
   - title: Overrun Organization
@@ -18,21 +18,17 @@ links:
     description: AmazingRabbit Studio is a studio that develops Minecraft mods and other things from China
     website: https://github.com/AmazingRabbit-Studio
     image: https://avatars.githubusercontent.com/u/79623476?s=200&v=4
-  - title: 编程开发交流群
-    description: 软件开发、游戏开发等
-    website: https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=hTlKmiSPJO_wGGpxbosYHN0XLC4HL3MA&authKey=fGtLvD5mJxSxHPEWYtTj2qcr7UlMzl2t%2BmoTS8OPbBo3KEZTWMv%2B2%2B2LlMg2EOQ6&noverify=0&group_code=1078745269
-    image: brand-qq.svg
   - title: OverrunGL
-    description: Overrun 游戏库
+    description: Overrun Game Library
     website: https://github.com/Over-Run/overrungl
     image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
 menu:
-  main:
-    weight: 5
-    params:
-      icon: link
+    main: 
+        weight: 5
+        params:
+            icon: link
 
 comments: false
 ---
 
-下方展示友链。在[这里](https://github.com/squid233/squid233.github.io/issues)可以申请展示你的网站等。
+関連リンクは下にあります。[ここ](https://github.com/squid233/squid233.github.io/issues)であなたのサイトの表示を申請できます。
