@@ -1,0 +1,7 @@
+darkMode:
+  other: 深色模式
+
+article:
+  wordCount:
+    one: "{{ .Count }}字"
+    other: "{{ .Count }}字"

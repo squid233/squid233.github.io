@@ -23,6 +23,7 @@ src = "img/avatar.png"
 [article]
 math = false
 readingTime = true
+wordCount = true
 
 [article.license]
 enabled = true
@@ -137,7 +138,7 @@ darkTheme = "dark"
 reactionsEnabled = 1
 emitMetadata = 0
 inputPosition = "top"
-lang = "zh-CN"
+lang = "en"
 
 [comments.gitalk]
 owner = ""

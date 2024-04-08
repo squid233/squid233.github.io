@@ -1,5 +1,5 @@
 ---
-title: "文章"
+title: "アーカイブス"
 date: 2024-04-06
 layout: "archives"
 slug: "archives"

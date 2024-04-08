@@ -6,6 +6,7 @@ title = "squid233's Blog"
 weight = 2
 [en.params]
 sidebar.subtitle = "A journey of a thousand miles begins with a single step."
+comments.giscus.lang = "en"
 
 [zh-cn]
 languageName = "简体中文"
@@ -14,6 +15,7 @@ title = "squid233的博客"
 weight = 1
 [zh-cn.params]
 sidebar.subtitle = "千里之行，始于足下。"
+comments.giscus.lang = "zh-CN"
 
 [ja]
 languageName = "日本語"
@@ -22,3 +24,4 @@ title = "squid233のブログ"
 weight = 3
 [ja.params]
 sidebar.subtitle = "努めています"
+comments.giscus.lang = "ja"

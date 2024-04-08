@@ -1,0 +1,4 @@
+article:
+  wordCount:
+    one: "{{ .Count }}字"
+    other: "{{ .Count }}字"
