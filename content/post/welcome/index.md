@@ -3,7 +3,6 @@ title: 欢迎
 description: 欢迎来到squid233的博客
 slug: welcome
 date: 2024-04-06 00:00:00+0000
-lastmod: 2024-04-08
 image: cover.png
 categories:
     - Announcement

@@ -24,3 +24,4 @@ An amateur programmer, the founder of [Overrun Organization](https://github.com/
 
 - Built in April, 2024
 - Support comments
+- Support responsive web design
