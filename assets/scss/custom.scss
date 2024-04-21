@@ -14,9 +14,139 @@
       box-shadow: var(--shadow-l2);
       margin-bottom: 8px;
       border-radius: 10px;
+
       &:nth-child(odd) {
         margin-right: 8px;
       }
     }
   }
+}
+
+.admonition {
+  border-width: .075rem;
+  border-style: solid;
+  border-radius: .2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-color: #448aff;
+}
+
+.admonition.note {
+  border-color: #448aff;
+}
+
+.admonition.note .admonition-title {
+  background-color: #448aff1a;
+}
+
+.admonition.abstract {
+  border-color: #00b0ff;
+}
+
+.admonition.abstract .admonition-title {
+  background-color: #00b0ff1a;
+}
+
+.admonition.info {
+  border-color: #00b8d4;
+}
+
+.admonition.info .admonition-title {
+  background-color: #00b8d41a;
+}
+
+.admonition.tip {
+  border-color: #00bfa5;
+}
+
+.admonition.tip .admonition-title {
+  background-color: #00bfa51a;
+}
+
+.admonition.success {
+  border-color: #00c853;
+}
+
+.admonition.success .admonition-title {
+  background-color: #00c8531a;
+}
+
+.admonition.question {
+  border-color: #64dd17;
+}
+
+.admonition.question .admonition-title {
+  background-color: #64dd171a;
+}
+
+.admonition.warning {
+  border-color: #ff9100;
+}
+
+.admonition.warning .admonition-title {
+  background-color: #ff91001a;
+}
+
+.admonition.failure {
+  border-color: #ff5252;
+}
+
+.admonition.failure .admonition-title {
+  background-color: #ff52521a;
+}
+
+.admonition.danger {
+  border-color: #ff1744;
+}
+
+.admonition.danger .admonition-title {
+  background-color: #ff17441a;
+}
+
+.admonition.bug {
+  border-color: #f50057;
+}
+
+.admonition.bug .admonition-title {
+  background-color: #f500571a;
+}
+
+.admonition.example {
+  border-color: #7c4dff;
+}
+
+.admonition.example .admonition-title {
+  background-color: #7c4dff1a;
+}
+
+.admonition.quote {
+  border-color: #9e9e9e;
+}
+
+.admonition.quote .admonition-title {
+  background-color: #9e9e9e1a;
+}
+
+.admonition-icon svg {
+  vertical-align: sub;
+}
+
+.admonition-title {
+  background-color: #448aff1a;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  margin-top: 0;
+  padding: 1rem;
+}
+
+details > summary.admonition-title {
+  cursor: pointer;
+  list-style: inside disclosure-closed;
+}
+
+details[open] > summary.admonition-title {
+  cursor: pointer;
+  list-style: inside disclosure-open;
 }

@@ -2,3 +2,28 @@ article:
   wordCount:
     one: "{{ .Count }} word"
     other: "{{ .Count }} words"
+
+note:
+  other: Note
+abstract:
+  other: Abstract
+info:
+  other: Info
+tip:
+  other: Tip
+success:
+  other: Success
+question:
+  other: Question
+warning:
+  other: Warning
+failure:
+  other: Failure
+danger:
+  other: Danger
+bug:
+  other: Bug
+example:
+  other: Example
+quote:
+  other: Quote

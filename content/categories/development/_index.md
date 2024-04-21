@@ -5,6 +5,6 @@ image: hips.svg
 
 # Badge style
 style:
-    background: "#2196f3"
+    background: "#0B78D0"
     color: "#fff"
 ---

@@ -1,13 +1,13 @@
 ---
 title: OverrunGL Introduction
-description: OverrunGL Introduction
 slug: overrungl-1
 date: 2024-04-12 00:00:00+0000
 categories:
-    - Development
+    - development
 tags:
     - java
     - overrungl
+    - game-development
 links:
   - title: GitHub
     description: OverrunGL is open-source
@@ -164,3 +164,8 @@ This requires native access to the module of the caller.
 ### Null Pointer
 
 `NULL` in C is modeled as `MemorySegment.NULL`, which is equivalent to `MemorySegment.ofAddress(0L)`.
+
+## Future Updates
+
+OverrunGL has added GLFW, OpenGL, stb and Native File Dialog.
+We plan to add Vulkan, OpenAL, FreeType, Zstandard and Assimp in the future.

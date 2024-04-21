@@ -1,0 +1,32 @@
+{{- $iconMap := dict "note" "pencil" -}}
+{{- $iconMap  = dict "abstract" "list" | merge $iconMap -}}
+{{- $iconMap  = dict "info" "info-circle" | merge $iconMap -}}
+{{- $iconMap  = dict "tip" "bulb" | merge $iconMap -}}
+{{- $iconMap  = dict "success" "circle-check" | merge $iconMap -}}
+{{- $iconMap  = dict "question" "help-circle" | merge $iconMap -}}
+{{- $iconMap  = dict "warning" "alert-triangle" | merge $iconMap -}}
+{{- $iconMap  = dict "failure" "circle-x" | merge $iconMap -}}
+{{- $iconMap  = dict "danger" "bolt" | merge $iconMap -}}
+{{- $iconMap  = dict "bug" "bug" | merge $iconMap -}}
+{{- $iconMap  = dict "example" "list-numbers" | merge $iconMap -}}
+{{- $iconMap  = dict "quote" "quote" | merge $iconMap -}}
+
+{{ if .IsNamedParams }}
+    {{ $type := .Get "type" | default "note" }}
+    <details class="admonition {{ $type }}" open>
+        <summary class="admonition-title">
+            <span class="admonition-icon">{{ partial "helper/icon" (index $iconMap $type | default (index $iconMap "note")) }}</span>
+            {{ .Get "title" | default (T $type) }}
+        </summary>
+        <p>{{ .Inner | markdownify }}</p>
+    </details>
+{{ else }}
+    {{ $type := .Get 0 | default "note" }}
+    <details class="admonition {{ $type }}" open>
+        <summary class="admonition-title">
+            <span class="admonition-icon">{{ partial "helper/icon" (index $iconMap $type | default (index $iconMap "note")) }}</span>
+            {{ .Get 1 | default (T $type) }}
+        </summary>
+        <p>{{ .Inner | markdownify }}</p>
+    </details>
+{{ end }}

@@ -4,3 +4,28 @@ darkMode:
 article:
   wordCount:
     other: "{{ .Count }}字"
+
+note:
+  other: 注意
+abstract:
+  other: 摘要
+info:
+  other: 信息
+tip:
+  other: 提示
+success:
+  other: 成功
+question:
+  other: 问题
+warning:
+  other: 警告
+failure:
+  other: 失败
+danger:
+  other: 危险
+bug:
+  other: Bug
+example:
+  other: 示例
+quote:
+  other: 引用
