@@ -1,6 +1,6 @@
 ---
 title: OverrunGL 介绍
-slug: overrungl-1
+slug: overrungl-0
 date: 2024-03-03 00:00:00+0000
 categories:
     - development
@@ -38,7 +38,7 @@ OverrunGL 支持以 Maven 方式导入。可用[生成器](https://over-run.gith
 
 OverrunGL 使用接口声明函数，在运行时生成实例。
 
-与 LWJGL 3 对比：
+对比 OverrunGL 和 LWJGL 3：
 
 ```java
 // OverrunGL
@@ -55,9 +55,9 @@ void dispose() {
 }
 ```
 
-不难看出，LWJGL 3 使用静态方法，而 OverrunGL 使用实例方法。
+可见，LWJGL 3 使用静态方法，而 OverrunGL 使用实例方法。
 
-对于一些库，使用实例方法能避开`ThreadLocal`。例如；
+对于部分库，用实例封装可要求方法强制传递该库需要的上下文（Context），在多线程环境中可避开`ThreadLocal`。例如：
 
 ```java
 // 省略导入
@@ -74,7 +74,7 @@ void drawSomething(GL gl) {
 }
 ```
 
-使用`ScopedValue`：
+也可用`ScopedValue`：
 
 ```java
 static final ScopedValue<GL> OpenGL = ScopedValue.newInstance();
@@ -102,15 +102,44 @@ void main() {
 }
 ```
 
-这段代码只加载`GL10C`和`GL20C`，不加载（`GL`继承的）其他类，提高初始化性能。
+上面的代码只加载`GL10C`和`GL20C`，不加载（`GL`继承的）其他类，提高初始化性能。
+
+{{< admonition tip >}}
+自定义状态机，只在状态改变时调用 OpenGL 函数。
+{{< /admonition >}}
+
+```java
+abstract class StateManager implements GL10C, GL11C {
+    private int textureBinding2D;
+
+    void bindTexture2D(int texture) {
+        if (textureBinding2D != texture) {
+            textureBinding2D = texture;
+            bindTexture(TEXTURE_2D, texture);
+        }
+    }
+
+    // 可选的getter...
+}
+
+void main() {
+    var gl = GLLoader.loadContext(MethodHandles.lookup(), flags, StateManager.class);
+    render(gl);
+}
+
+void render(StateManager gl) {
+    gl.bindTexture2D(0);
+}
+```
 
 ## 内存管理
 
-OverrunGL 使用 FFM API 提供的`MemorySegment`。
+传统的 JNI 库用`long`表示内存地址，并用 NIO Buffer 访问内存。OverrunGL 则使用 FFM API 自带的封装`MemorySegment`。
 
 ### 内存分配
 
-使用`Arena`分配内存。`Arena`只允许分配，不允许手动释放内存。内存只能在`Arena`的作用域内访问。
+`MemorySegment`由`SegmentAllocator`创建。
+JDK 自带`Arena`分配器。`Arena`只允许分配内存，关闭`Arena`后自动释放它分配的内存。
 
 ```java
 try (var arena = Arena.ofConfined()) {
@@ -150,5 +179,5 @@ C 中的`NULL`可用`MemorySegment.NULL`表示，且等效于`MemorySegment.ofAd
 
 ## 未来更新
 
-OverrunGL 已经添加了 GLFW、OpenGL、stb和Native File Dialog。
-我们计划在未来添加 Vulkan、OpenAL、FreeType、Zstandard 和 Assimp。
+OverrunGL 已支持 GLFW、OpenGL、stb 以及 Native File Dialog。
+我们计划在未来添加 Vulkan、OpenAL、FreeType、Zstandard 和 Assimp，并使用 Java 25。

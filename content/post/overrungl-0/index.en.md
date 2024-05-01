@@ -1,6 +1,6 @@
 ---
 title: OverrunGL Introduction
-slug: overrungl-1
+slug: overrungl-0
 date: 2024-04-12 00:00:00+0000
 categories:
     - development
@@ -114,6 +114,35 @@ This code only loads `GL10C` and `GL20C`.
 It will not load other classes that `GL` extends,
 so it will improve the bootstrap performance.
 
+{{< admonition tip >}}
+An OpenGL state manager which does only invoke GL function
+when the state is actually changed.
+{{< /admonition >}}
+
+```java
+abstract class StateManager implements GL10C, GL11C {
+    private int textureBinding2D;
+
+    void bindTexture2D(int texture) {
+        if (textureBinding2D != texture) {
+            textureBinding2D = texture;
+            bindTexture(TEXTURE_2D, texture);
+        }
+    }
+
+    // an optional getter here...
+}
+
+void main() {
+    var gl = GLLoader.loadContext(MethodHandles.lookup(), flags, StateManager.class);
+    render(gl);
+}
+
+void render(StateManager gl) {
+    gl.bindTexture2D(0);
+}
+```
+
 ## Memory Management
 
 OverrunGL uses `MemorySegment` instead of NIO Buffers.
@@ -168,4 +197,4 @@ This requires native access to the module of the caller.
 ## Future Updates
 
 OverrunGL has added GLFW, OpenGL, stb and Native File Dialog.
-We plan to add Vulkan, OpenAL, FreeType, Zstandard and Assimp in the future.
+We plan to add Vulkan, OpenAL, FreeType, Zstandard and Assimp and use Java 25 in the future.
