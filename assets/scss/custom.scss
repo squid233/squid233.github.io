@@ -150,3 +150,14 @@ details[open] > summary.admonition-title {
   cursor: pointer;
   list-style: inside disclosure-open;
 }
+
+.mask {
+  color: black;
+  background-color: black;
+  transition: color 0.1s;
+}
+
+.mask:hover {
+  color: #ffffffe6;
+  transition: color 0.1s;
+}

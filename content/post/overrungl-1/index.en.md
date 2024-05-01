@@ -111,7 +111,7 @@ void main() {
 ```
 
 This code only loads `GL10C` and `GL20C`.
-It will not load other classes,
+It will not load other classes that `GL` extends,
 so it will improve the bootstrap performance.
 
 ## Memory Management
@@ -121,7 +121,7 @@ It is provided by the FFM API.
 
 ### Allocation
 
-Use `Arena`, which does only allow allocating but not destroying memory.
+Use `Arena`, which does only allow allocating but not destroying memory manually.
 The memory is only accessible within the scope of the `Arena`.
 
 ```java
@@ -151,7 +151,7 @@ The push and pop operations must be symmetric.
 ### Zero-length Segments
 
 Native functions might return a pointer.
-If the layout of the return type is not specified,
+If the layout of the returned pointer is not specified,
 the FFM API will convert it to a _zero-length_ memory segment.
 
 You can resize it with `MemorySegment::reinterpret`.
