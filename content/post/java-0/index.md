@@ -7,13 +7,7 @@ categories:
 tags:
   - java
   - Java 循序渐进
-weight: 2
-menu:
-  main:
-    name: Java 循序渐进
-    weight: 6
-    params:
-      icon: link
+weight: 4
 links:
   - title: 下一章
     description: 1 基础知识
