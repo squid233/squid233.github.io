@@ -112,6 +112,8 @@ void main() {
 abstract class StateManager implements GL10C, GL11C {
     private int textureBinding2D;
 
+    // 需要添加Skip注解防止误识别为OpenGL函数
+    @overrun.marshal.gen.Skip
     void bindTexture2D(int texture) {
         if (textureBinding2D != texture) {
             textureBinding2D = texture;

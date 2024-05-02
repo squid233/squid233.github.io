@@ -123,6 +123,8 @@ when the state is actually changed.
 abstract class StateManager implements GL10C, GL11C {
     private int textureBinding2D;
 
+    // Add annotation Skip to avoid identifying as an OpenGL function
+    @overrun.marshal.gen.Skip
     void bindTexture2D(int texture) {
         if (textureBinding2D != texture) {
             textureBinding2D = texture;
