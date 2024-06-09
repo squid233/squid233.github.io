@@ -11,22 +11,63 @@
 {{- $iconMap  = dict "example" "list-numbers" | merge $iconMap -}}
 {{- $iconMap  = dict "quote" "quote" | merge $iconMap -}}
 
+{{ $hidden := "open" }}
+
 {{ if .IsNamedParams }}
     {{ $type := .Get "type" | default "note" }}
-    <details class="admonition {{ $type }}" open>
+    {{ if .Get "canOpen" }}
+        {{ if .Get "hidden" }}
+            {{ $hidden = "" }}
+        {{ end }}
+        <details class="admonition {{ $type }}" {{ $hidden }}>
+    {{ else }}
+        <div class="admonition {{ $type }}">
+    {{ end }}
+        {{ if .Get "canOpen" }}
         <summary class="admonition-title">
+        {{ else }}
+        <div class="admonition-title">
+        {{ end }}
             <span class="admonition-icon">{{ partial "helper/icon" (index $iconMap $type | default (index $iconMap "note")) }}</span>
             {{ .Get "title" | default (T $type) }}
+        {{ if .Get "canOpen" }}
         </summary>
+        {{ else }}
+        </div>
+        {{ end }}
         <p>{{ .Inner | markdownify }}</p>
-    </details>
+    {{ if .Get "canOpen" }}
+        </details>
+    {{ else }}
+        </div>
+    {{ end }}
 {{ else }}
     {{ $type := .Get 0 | default "note" }}
-    <details class="admonition {{ $type }}" open>
+    {{ $htmlTag := "div" }}
+    {{ if .Get 2 }}
+        {{ if .Get 3 }}
+            {{ $hidden = "" }}
+        {{ end }}
+        <details class="admonition {{ $type }}" {{ $hidden }}>
+    {{ else }}
+        <div class="admonition {{ $type }}">
+    {{ end }}
+        {{ if .Get 2 }}
         <summary class="admonition-title">
+        {{ else }}
+        <div class="admonition-title">
+        {{ end }}
             <span class="admonition-icon">{{ partial "helper/icon" (index $iconMap $type | default (index $iconMap "note")) }}</span>
             {{ .Get 1 | default (T $type) }}
+        {{ if .Get "canOpen" }}
         </summary>
+        {{ else }}
+        </div>
+        {{ end }}
         <p>{{ .Inner | markdownify }}</p>
-    </details>
+    {{ if .Get 2 }}
+        </details>
+    {{ else }}
+        </div>
+    {{ end }}
 {{ end }}

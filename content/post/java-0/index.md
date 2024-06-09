@@ -4,6 +4,7 @@ slug: java-0
 date: 2024-04-20 00:00:00+0000
 categories:
   - development
+  - indexes
 tags:
   - java
   - Java 循序渐进
