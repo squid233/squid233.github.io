@@ -11,11 +11,9 @@ tags:
 weight: 3
 ---
 
+[MkDocs 版](https://squid233.github.io/java-tutorial/)
+
 欢迎阅读本书！本书将教你学会 Java 的基本语法和功能。
-
-本书尚未完成，敬请期待。
-
-本书使用 Java 22。
 
 - [第一章：基础知识](https://squid233.github.io/java-tutorial/basic/)
     - [1.1 配置环境](https://squid233.github.io/java-tutorial/basic/setup/)
@@ -23,20 +21,17 @@ weight: 3
     - 1.3 表达式
         - [1.3.1 整数](https://squid233.github.io/java-tutorial/basic/exp/integer/)
         - [1.3.2 浮点数](https://squid233.github.io/java-tutorial/basic/exp/floating_point/)
-        - 1.3.3 字符串
-        - 1.3.4 布尔值
-    - 1.4 变量
-        - 1.4.1 数据类型
-        - 1.4.2 数组
-    - 1.5 方法
-    - 1.6 源文件
-        - 1.6.1 IDE
-        - 1.6.2 主方法
-        - 1.6.3 输出内容
-    - 1.7 流程控制
-        - 1.7.1 条件
-        - 1.7.2 循环
-        - 1.7.3 选择
+        - [1.3.3 字符串](https://squid233.github.io/java-tutorial/basic/exp/string/)
+        - [1.3.4 布尔值](https://squid233.github.io/java-tutorial/basic/exp/boolean/)
+    - [1.4 变量](https://squid233.github.io/java-tutorial/basic/variable/)
+    - [1.5 数组](https://squid233.github.io/java-tutorial/basic/array/)
+    - [1.6 方法](https://squid233.github.io/java-tutorial/basic/method/)
+    - [1.7 IDE](https://squid233.github.io/java-tutorial/basic/ide/)
+    - [1.8 源文件](https://squid233.github.io/java-tutorial/basic/source_file/)
+    - 1.9 流程控制
+        - 1.9.1 条件
+        - 1.9.2 循环
+        - 1.9.3 选择
 - 第二章：面向对象
     - 2.1 类
         - 2.1.1 实例成员
