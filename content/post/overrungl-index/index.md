@@ -9,7 +9,7 @@ tags:
     - java
     - overrungl
     - game-development
-weight: 3
+weight: 4
 ---
 
 欢迎阅读本书。本书介绍 OverrunGL 的使用方法，并教你开发一个简单的 2D 游戏。
