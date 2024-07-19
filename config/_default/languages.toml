@@ -5,7 +5,7 @@ languagedirection = "ltr"
 title = "squid233's Blog"
 weight = 2
 [en.params]
-sidebar.subtitle = "A journey of a thousand miles begins with a single step."
+sidebar.subtitle = "Everyone is a lonely star"
 comments.giscus.lang = "en"
 
 [zh-cn]
