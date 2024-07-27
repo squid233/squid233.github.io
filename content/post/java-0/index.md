@@ -28,10 +28,8 @@ weight: 3
     - [1.6 方法](https://squid233.github.io/java-tutorial/basic/method/)
     - [1.7 IDE](https://squid233.github.io/java-tutorial/basic/ide/)
     - [1.8 源文件](https://squid233.github.io/java-tutorial/basic/source_file/)
-    - 1.9 流程控制
-        - 1.9.1 条件
-        - 1.9.2 循环
-        - 1.9.3 选择
+    - [1.9 流程控制](https://squid233.github.io/java-tutorial/basic/control_flow/)
+    - [1.10 小结](https://squid233.github.io/java-tutorial/basic/summary/)
 - 第二章：面向对象
     - 2.1 类
         - 2.1.1 实例成员
