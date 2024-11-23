@@ -9,26 +9,27 @@ tags:
     - overrungl
     - game-development
 links:
-  - title: GitHub
-    description: OverrunGL is open-source
-    website: https://github.com/Over-Run/overrungl
-  - title: Wiki
-    description: OverrunGL Wiki
-    website: https://github.com/Over-Run/overrungl/wiki
-  - title: Discussions
-    description: Discuss about OverrunGL
-    website: https://github.com/Over-Run/overrungl/discussions
-  - title: Javadoc
-    description: OverrunGL references
-    website: https://over-run.github.io/overrungl/
+    -   title: GitHub
+        description: OverrunGL is open-source
+        website: https://github.com/Over-Run/overrungl
+    -   title: Wiki
+        description: OverrunGL Wiki
+        website: https://github.com/Over-Run/overrungl/wiki
+    -   title: Discussions
+        description: Discuss about OverrunGL
+        website: https://github.com/Over-Run/overrungl/discussions
+    -   title: Javadoc
+        description: OverrunGL references
+        website: https://over-run.github.io/overrungl/
 ---
 
-Java 22 has been released, and the [FFM API](https://openjdk.org/jeps/454) is finalized.
-In this article, I will introduce a library that uses this API called OverrunGL.
+OverrunGL, whose full name is Overrun Game Library, is developed by Overrun Organization.
+This article introduced the differences between OverrunGL and LWJGL 3 as well as the characteristics of OverrunGL.
 
 ## Introduction
 
-OverrunGL is a Java library that allows accessing C libraries.
+OverrunGL is written in Java 23, using the [FFM API](https://openjdk.org/jeps/454) added in Java 22, which allows one to
+access various C libraries.
 
 See the links below for more information.
 
@@ -41,7 +42,7 @@ There is a [generator](https://over-run.github.io/overrungl-gen/) for it.
 
 OverrunGL defines functions with interfaces and generates implementation at runtime.
 
-Compare with LWJGL 3:
+Comparing with LWJGL 3:
 
 ```java
 // OverrunGL
@@ -97,8 +98,7 @@ void drawSomething() {
 
 ### Modular Loading
 
-The OpenGL module has supported modular loading.
-You can load only the functions you need.
+The OpenGL module supports modular loading i.e. only load the functions that one would need.
 See this example:
 
 ```java
@@ -111,8 +111,8 @@ void main() {
 ```
 
 This code only loads `GL10C` and `GL20C`.
-It will not load other classes that `GL` extends,
-so it will improve the bootstrap performance.
+Besides that, no other methods whose owner classes extended by `GL` will be loaded,
+so that the bootstrap performance will be improved.
 
 {{< admonition tip >}}
 An OpenGL state manager which does only invoke GL function
@@ -147,12 +147,14 @@ void render(StateManager gl) {
 
 ## Memory Management
 
-OverrunGL uses `MemorySegment` instead of NIO Buffers.
-It is provided by the FFM API.
+Traditional JNI libraries use `long` to represent memory address and NIO buffers to access memory.
+In OverrunGL, however, it uses `MemorySegment`, which is provided by the FFM API.
 
 ### Allocation
 
-Use `Arena`, which does only allow allocating but not destroying memory manually.
+The `MemorySegment` is created by `SegmentAllocator`.
+A common-used type of segment allocator included in JDK is `Arena`, which only allows allocating
+but not destroying memory manually.
 The memory is only accessible within the scope of the `Arena`.
 
 ```java
@@ -163,13 +165,14 @@ try (var arena = Arena.ofConfined()) {
 // the memory is automatically released
 ```
 
-#### Memory Stack
+### Memory Stack
 
-Memory stack (implementation from
-[LWJGL 3](https://github.com/LWJGL/lwjgl3/blob/master/modules/lwjgl/core/src/main/java/org/lwjgl/system/MemoryStack.java))
-is a kind of `Arena`. It allocates a memory segment once then reuses it.
+The `Arena` does not support reuse memory,
+which caused the performance decreasing when allocating small memory for multiple times.
+For this reason, the memory stack is used to store and reuse the (global) allocated memory.
 
-Use `MemoryStack::stackPush` to push a frame:
+OverrunGL uses [memstack](https://github.com/Over-Run/memstack) to implement the allocation of small memory in methods.
+The basic usage of memstack is shown below:
 
 ```java
 try (var stack = MemoryStack.stackPush()) {
@@ -182,11 +185,11 @@ The push and pop operations must be symmetric.
 ### Zero-length Segments
 
 Native functions might return a pointer.
-If the layout of the returned pointer is not specified,
-the FFM API will convert it to a _zero-length_ memory segment.
+If the layout of the returned pointer is not specified, the FFM API will convert it to a _zero-length_ memory segment,
+which only represents a memory address.
 
-You can resize it with `MemorySegment::reinterpret`.
-This requires native access to the module of the caller.
+After enabling the native access to the caller, you can resize the returned memory segment
+with `MemorySegment::reinterpret`.
 
 ```text
 --enable-native-access=<module-name>
@@ -198,5 +201,5 @@ This requires native access to the module of the caller.
 
 ## Future Updates
 
-OverrunGL has added GLFW, OpenGL, stb and Native File Dialog.
-We plan to add Vulkan, OpenAL, FreeType, Zstandard and Assimp and use Java 25 in the future.
+OverrunGL has added GLFW, OpenGL, stb as well as (Extended) Native File Dialog.
+We are planning to add Vulkan, OpenAL, FreeType, Zstandard and Assimp and use Java 25 in the future.

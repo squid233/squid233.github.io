@@ -9,7 +9,6 @@ tags:
     - java
     - overrungl
     - game-development
-weight: 4
 draft: true
 ---
 

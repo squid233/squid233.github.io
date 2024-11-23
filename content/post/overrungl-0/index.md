@@ -21,18 +21,18 @@ links:
   - title: Javadoc
     description: OverrunGL Javadoc
     website: https://over-run.github.io/overrungl/
+weight: 3
 ---
 
-Java 22 已经发布，其中加入了 [FFM API](https://openjdk.org/jeps/454)。
-本文介绍使用了 FFM API 的 Java 库——OverrunGL。
+OverrunGL 全称为 Overrun Game Library，顾名思义就是由 Overrun Organization 开发的游戏库（实际上和游戏没什么关系）。本文介绍 OverrunGL 相对于 LWJGL 3 的区别和特点。
 
 ## 介绍
 
-OverrunGL 支持访问 C 库。请参考底部的链接获得详细信息。
+OverrunGL 使用 Java 23 编写，并利用 Java 22 加入的 [FFM API](https://openjdk.org/jeps/454) 来访问各种 C 库。请参考底部的链接获得详细信息。
 
 ## 下载
 
-OverrunGL 支持以 Maven 方式导入。可用[生成器](https://over-run.github.io/overrungl-gen/)生成依赖。{{< mask >}}网络不佳的环境可能需要 10 分钟加载。{{< /mask >}}
+OverrunGL 支持以 Maven 方式导入。可用[生成器](https://over-run.github.io/overrungl-gen/)生成依赖。
 
 ## 函数调用
 
@@ -112,7 +112,7 @@ void main() {
 abstract class StateManager implements GL10C, GL11C {
     private int textureBinding2D;
 
-    // 需要添加Skip注解防止误识别为OpenGL函数
+    // 需要添加Skip注解防止识别为OpenGL函数
     @overrun.marshal.gen.Skip
     void bindTexture2D(int texture) {
         if (textureBinding2D != texture) {
@@ -140,8 +140,7 @@ void render(StateManager gl) {
 
 ### 内存分配
 
-`MemorySegment`由`SegmentAllocator`创建。
-JDK 自带`Arena`分配器。`Arena`只允许分配内存，关闭`Arena`后自动释放它分配的内存。
+`MemorySegment`由`SegmentAllocator`创建。JDK 自带`Arena`分配器，其只允许分配内存，关闭后自动释放所分配的内存。
 
 ```java
 try (var arena = Arena.ofConfined()) {
@@ -151,28 +150,26 @@ try (var arena = Arena.ofConfined()) {
 // 自动释放内存
 ```
 
-#### 内存堆栈
+### 内存堆栈
 
-内存堆栈（从
-[LWJGL 3](https://github.com/LWJGL/lwjgl3/blob/master/modules/lwjgl/core/src/main/java/org/lwjgl/system/MemoryStack.java)
-移植）属于`Arena`。内存堆栈重用分配的内存。
+JDK 自带的 Arena 不支持重复使用内存，在多次分配少量内存时效率相对低下，故需要使用内存堆栈保存并重用分配的内存。
 
-使用`MemoryStack::stackPush`：
+OverrunGL 使用 [memstack](https://github.com/Over-Run/memstack) 实现方法中少量内存的分配。memstack 的基本用法如下：
 
 ```java
-try (var stack = MemoryStack.stackPush()) {
+try (var stack = MemoryStack.pushLocal()) {
     var seg = stack.allocate(ValueLayout.JAVA_INT);
 }
 ```
 
 ### 零长内存段
 
-本机函数可能返回指针。如果没有指定返回指针的类型，FFM API 将使用**零长内存段**（zero-length segment）。
+C 库中的函数可能返回指针，如果没有指定返回指针的类型，FFM API 将使用**零长内存段**（zero-length segment），其只表示一个地址。
 
-开放调用者的权限时，可使用`MemorySegment::reinterpret`设置大小。
+开放调用者的权限后，可使用`MemorySegment::reinterpret`设置内存段的大小。
 
 ```text
---enable-native-access=<module-name>
+--enable-native-access=<模块名>
 ```
 
 ### 空指针
@@ -181,5 +178,5 @@ C 中的`NULL`可用`MemorySegment.NULL`表示，且等效于`MemorySegment.ofAd
 
 ## 未来更新
 
-OverrunGL 已支持 GLFW、OpenGL、stb 以及 Native File Dialog。
+OverrunGL 已支持 GLFW、OpenGL、stb 以及 (Extended) Native File Dialog。
 我们计划在未来添加 Vulkan、OpenAL、FreeType、Zstandard 和 Assimp，并使用 Java 25。

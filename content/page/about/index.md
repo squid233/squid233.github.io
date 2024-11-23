@@ -15,10 +15,10 @@ menu:
 
 ## 技能
 
-- 会的语言：中文、英语
+- 会的语言：汉语、英语
 - Java、Kotlin
 - OpenGL
-- 会一点C、C++、C#、Python
+- （只）会一点C、C++、C#、Python
 
 ## 关于本站
 

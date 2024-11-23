@@ -18,7 +18,7 @@ An amateur programmer, the founder of [Overrun Organization](https://github.com/
 - I can speak Chinese and a bit English.
 - Java, Kotlin
 - OpenGL
-- A bit of C, C++, C# and Python
+- (Only) A bit of C, C++, C# and Python
 
 ## About this site
 

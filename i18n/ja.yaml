@@ -1,3 +1,0 @@
-article:
-  wordCount:
-    other: "{{ .Count }}字"
