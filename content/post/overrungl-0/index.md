@@ -21,7 +21,6 @@ links:
   - title: Javadoc
     description: OverrunGL Javadoc
     website: https://over-run.github.io/overrungl/
-weight: 3
 ---
 
 OverrunGL 全称为 Overrun Game Library，顾名思义就是由 Overrun Organization 开发的游戏库（实际上和游戏没什么关系）。本文介绍 OverrunGL 相对于 LWJGL 3 的区别和特点。

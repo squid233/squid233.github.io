@@ -25,24 +25,25 @@ weight: 3
         - [1.4.3 逻辑运算](https://squid233.github.io/java-tutorial/basic/exp/logic_operation/)
         - [1.4.4 位运算](https://squid233.github.io/java-tutorial/basic/exp/bit_operation/)
         - [1.4.5 字符串拼接](https://squid233.github.io/java-tutorial/basic/exp/string_concat/)
-        - [1.4.6 强制转换](https://squid233.github.io/java-tutorial/basic/exp/cast/)
-    - [1.5 标识符、关键字](https://squid233.github.io/java-tutorial/basic/identifier_keyword/)
-    - [1.6 块、语句](https://squid233.github.io/java-tutorial/basic/block_statement/)
-    - [1.7 变量](https://squid233.github.io/java-tutorial/basic/variable/)
-    - [1.8 数组](https://squid233.github.io/java-tutorial/basic/array/)
-    - [1.9 方法](https://squid233.github.io/java-tutorial/basic/method/)
-    - [1.10 IDE](https://squid233.github.io/java-tutorial/basic/ide/)
-    - [1.11 源文件](https://squid233.github.io/java-tutorial/basic/source_file/)
-    - [1.12 流程控制](https://squid233.github.io/java-tutorial/basic/control_flow/)
-    - [1.13 小结](https://squid233.github.io/java-tutorial/basic/summary/)
+    - [1.5 变量](https://squid233.github.io/java-tutorial/basic/variable/)
+    - [1.6 数组](https://squid233.github.io/java-tutorial/basic/array/)
+    - [1.7 方法](https://squid233.github.io/java-tutorial/basic/method/)
+    - [1.8 IDE](https://squid233.github.io/java-tutorial/basic/ide/)
+    - [1.9 源文件](https://squid233.github.io/java-tutorial/basic/source_file/)
+    - 1.10 流程控制
+        - [1.10.1 条件语句](https://squid233.github.io/java-tutorial/basic/control_flow/condition/)
+        - [1.10.2 选择语句](https://squid233.github.io/java-tutorial/basic/control_flow/switch/)
+        - [1.10.3 循环语句](https://squid233.github.io/java-tutorial/basic/control_flow/loop/)
+    - [1.11 小结](https://squid233.github.io/java-tutorial/basic/summary/)
+    - [1.12 章后练习](https://squid233.github.io/java-tutorial/basic/practice/)
 - [第二章：面向对象](https://squid233.github.io/java-tutorial/object/)
     - 2.1 包
     - 2.2 类
     - 2.3 StringBuilder
-    - 2.4 继承、多态
-    - 2.5 抽象类
-    - 2.6 接口
-    - 2.7 包装类型
+    - 2.4 包装类型
+    - 2.5 继承、多态
+    - 2.6 抽象类
+    - 2.7 接口
     - 2.8 泛型
     - 2.9 集合
         - 2.9.1 List
