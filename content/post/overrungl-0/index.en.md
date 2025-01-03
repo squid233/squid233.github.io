@@ -40,108 +40,39 @@ There is a [generator](https://over-run.github.io/overrungl-gen/) for it.
 
 ## Function Invocation
 
-OverrunGL defines functions with interfaces and generates implementation at runtime.
+OverrunGL uses static methods to invoke native functions, except for OpenGL, which stores addresses of functions with instance and invoke that by instance methods.
 
 Comparing with LWJGL 3:
 
 ```java
 // OverrunGL
-import overrungl.glfw.GLFW;
-GLFW glfw = GLFW.INSTANCE;
-void dispose() {
-    glfw.terminate();
+import overrungl.opengl.GL;
+GL gl;
+void render() {
+    gl.Clear(...);
 }
 
 // LWJGL 3
-import static org.lwjgl.glfw.GLFW.*;
-void dispose() {
-    glfwTerminate();
+import static org.lwjgl.opengl.GL11C.*;
+void render() {
+    glClear(...);
 }
 ```
 
-You can see that LWJGL 3 uses static methods,
-but OverrunGL uses instance methods.
-
-For several libraries,
-instances might be helpful in multithreading context by avoiding `ThreadLocal`.
+For OpenGL,
+instances can be helpful in multi-threading context by avoiding `ThreadLocal`.
 For example:
-
-```java
-// Imports are omitted
-// OpenGL
-void main() {
-    GLFW glfw = ...;
-    GL gl = load(glfw::getProcAddress);
-    drawSomething(gl);
-}
-
-void drawSomething(GL gl) {
-    // Assumes there is a Mesh class with render method
-    mesh.render(gl);
-}
-```
-
-or `ScopedValue`:
 
 ```java
 static final ScopedValue<GL> OpenGL = ScopedValue.newInstance();
 void main() {
     GL gl = ...;
-    ScopedValue.runWhere(OpenGL, gl, this::drawSomething);
+    ScopedValue.where(OpenGL, gl).run(this::render);
 }
 
-void drawSomething() {
+void render() {
     // No need to pass an argument
-    mesh.render();
-}
-```
-
-### Modular Loading
-
-The OpenGL module supports modular loading i.e. only load the functions that one would need.
-See this example:
-
-```java
-interface MyFunctions
-extends GL10C, GL20C {}
-
-void main() {
-    var gl = GLLoader.loadContext(MethodHandles.lookup(), flags, MyFunctions.class);
-}
-```
-
-This code only loads `GL10C` and `GL20C`.
-Besides that, no other methods whose owner classes extended by `GL` will be loaded,
-so that the bootstrap performance will be improved.
-
-{{< admonition tip >}}
-An OpenGL state manager which does only invoke GL function
-when the state is actually changed.
-{{< /admonition >}}
-
-```java
-abstract class StateManager implements GL10C, GL11C {
-    private int textureBinding2D;
-
-    // Add annotation Skip to avoid identifying as an OpenGL function
-    @overrun.marshal.gen.Skip
-    void bindTexture2D(int texture) {
-        if (textureBinding2D != texture) {
-            textureBinding2D = texture;
-            bindTexture(TEXTURE_2D, texture);
-        }
-    }
-
-    // an optional getter here...
-}
-
-void main() {
-    var gl = GLLoader.loadContext(MethodHandles.lookup(), flags, StateManager.class);
-    render(gl);
-}
-
-void render(StateManager gl) {
-    gl.bindTexture2D(0);
+    OpenGL.get().Clear(...);
 }
 ```
 
@@ -160,7 +91,7 @@ The memory is only accessible within the scope of the `Arena`.
 ```java
 try (var arena = Arena.ofConfined()) {
     var seg = arena.allocate(ValueLayout.JAVA_INT);
-    //...
+    // access the memory...
 }
 // the memory is automatically released
 ```
@@ -171,8 +102,8 @@ The `Arena` does not support reuse memory,
 which caused the performance decreasing when allocating small memory for multiple times.
 For this reason, the memory stack is used to store and reuse the (global) allocated memory.
 
-OverrunGL uses [memstack](https://github.com/Over-Run/memstack) to implement the allocation of small memory in methods.
-The basic usage of memstack is shown below:
+OverrunGL uses `MemoryStack` to implement the allocation of small memory in methods.
+The basic usage of `MemoryStack` is shown below:
 
 ```java
 try (var stack = MemoryStack.stackPush()) {
@@ -201,5 +132,5 @@ with `MemorySegment::reinterpret`.
 
 ## Future Updates
 
-OverrunGL has added GLFW, OpenGL, stb as well as (Extended) Native File Dialog.
+OverrunGL has added GLFW, OpenGL, stb and Native File Dialog Extended.
 We are planning to add Vulkan, OpenAL, FreeType, Zstandard and Assimp and use Java 25 in the future.

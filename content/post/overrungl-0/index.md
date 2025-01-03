@@ -35,101 +35,37 @@ OverrunGL 支持以 Maven 方式导入。可用[生成器](https://over-run.gith
 
 ## 函数调用
 
-OverrunGL 使用接口声明函数，在运行时生成实例。
+OverrunGL 使用静态方法调用本机函数。例外是 OpenGL，由实例保存函数的地址，并使用实例方法调用本机函数。
 
 对比 OverrunGL 和 LWJGL 3：
 
 ```java
 // OverrunGL
-import overrungl.glfw.GLFW;
-GLFW glfw = GLFW.INSTANCE;
-void dispose() {
-    glfw.terminate();
+import overrungl.opengl.GL;
+GL gl;
+void render() {
+    gl.Clear(...);
 }
 
 // LWJGL 3
-import static org.lwjgl.glfw.GLFW.*;
-void dispose() {
-    glfwTerminate();
+import static org.lwjgl.opengl.GL11C.*;
+void render() {
+    glClear(...);
 }
 ```
 
-可见，LWJGL 3 使用静态方法，而 OverrunGL 使用实例方法。
-
-对于部分库，用实例封装可要求方法强制传递该库需要的上下文（Context），在多线程环境中可避开`ThreadLocal`。例如：
-
-```java
-// 省略导入
-// OpenGL
-void main() {
-    GLFW glfw = ...;
-    GL gl = load(glfw::getProcAddress);
-    drawSomething(gl);
-}
-
-void drawSomething(GL gl) {
-    // 假设 Mesh 类中有 render 方法
-    mesh.render(gl);
-}
-```
-
-也可用`ScopedValue`：
+对于 OpenGL，用实例封装可要求方法强制传递上下文（Context），配合`ScopedValue`在多线程环境中可避开`ThreadLocal`。例如：
 
 ```java
 static final ScopedValue<GL> OpenGL = ScopedValue.newInstance();
 void main() {
     GL gl = ...;
-    ScopedValue.runWhere(OpenGL, gl, this::drawSomething);
+    ScopedValue.where(OpenGL, gl).run(this::render);
 }
 
-void drawSomething() {
-    // 无需传递参数
-    mesh.render();
-}
-```
-
-### 模块化加载
-
-OpenGL 模块支持模块化加载，即只加载需要的函数。见下列示例：
-
-```java
-interface MyFunctions
-extends GL10C, GL20C {}
-
-void main() {
-    var gl = GLLoader.loadContext(MethodHandles.lookup(), flags, MyFunctions.class);
-}
-```
-
-上面的代码只加载`GL10C`和`GL20C`，不加载（`GL`继承的）其他类，提高初始化性能。
-
-{{< admonition tip >}}
-自定义状态机，只在状态改变时调用 OpenGL 函数。
-{{< /admonition >}}
-
-```java
-abstract class StateManager implements GL10C, GL11C {
-    private int textureBinding2D;
-
-    // 需要添加Skip注解防止识别为OpenGL函数
-    @overrun.marshal.gen.Skip
-    void bindTexture2D(int texture) {
-        if (textureBinding2D != texture) {
-            textureBinding2D = texture;
-            bindTexture(TEXTURE_2D, texture);
-        }
-    }
-
-    // 可选的getter...
-}
-
-void main() {
-    var gl = GLLoader.loadContext(MethodHandles.lookup(), flags, StateManager.class);
-    render(gl);
-}
-
-void render(StateManager gl) {
-    gl.bindTexture2D(0);
+void render() {
+    // 无需传递方法参数
+    OpenGL.get().Clear(...);
 }
 ```
 
@@ -144,7 +80,7 @@ void render(StateManager gl) {
 ```java
 try (var arena = Arena.ofConfined()) {
     var seg = arena.allocate(ValueLayout.JAVA_INT);
-    //...
+    // 访问内存...
 }
 // 自动释放内存
 ```
@@ -153,7 +89,7 @@ try (var arena = Arena.ofConfined()) {
 
 JDK 自带的 Arena 不支持重复使用内存，在多次分配少量内存时效率相对低下，故需要使用内存堆栈保存并重用分配的内存。
 
-OverrunGL 使用 [memstack](https://github.com/Over-Run/memstack) 实现方法中少量内存的分配。memstack 的基本用法如下：
+OverrunGL 使用`MemoryStack`实现方法中少量内存的分配。`MemoryStack`的基本用法如下：
 
 ```java
 try (var stack = MemoryStack.pushLocal()) {
@@ -177,5 +113,5 @@ C 中的`NULL`可用`MemorySegment.NULL`表示，且等效于`MemorySegment.ofAd
 
 ## 未来更新
 
-OverrunGL 已支持 GLFW、OpenGL、stb 以及 (Extended) Native File Dialog。
+OverrunGL 已支持 GLFW、OpenGL、stb 以及 Native File Dialog Extended。
 我们计划在未来添加 Vulkan、OpenAL、FreeType、Zstandard 和 Assimp，并使用 Java 25。

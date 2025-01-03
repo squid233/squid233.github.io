@@ -37,26 +37,27 @@ weight: 3
     - [1.11 小结](https://squid233.github.io/java-tutorial/basic/summary/)
     - [1.12 章后练习](https://squid233.github.io/java-tutorial/basic/practice/)
 - [第二章：面向对象](https://squid233.github.io/java-tutorial/object/)
-    - 2.1 包
+    - [2.1 包](https://squid233.github.io/java-tutorial/object/package/)
     - 2.2 类
-    - 2.3 StringBuilder
-    - 2.4 包装类型
-    - 2.5 继承、多态
-    - 2.6 抽象类
-    - 2.7 接口
-    - 2.8 泛型
-    - 2.9 集合
-        - 2.9.1 List
-        - 2.9.2 Set
-        - 2.9.3 Map
-    - 2.10 异常处理
-    - 2.11 文件
-        - 2.11.1 Files
-        - 2.11.2 装饰器模式
-        - 2.11.3 文件流
-    - 2.12 枚举
-    - 2.13 注解
-    - 2.14 小结
+    - 2.3 Scanner
+    - 2.4 StringBuilder
+    - 2.5 包装类型
+    - 2.6 继承、多态
+    - 2.7 抽象类
+    - 2.8 接口
+    - 2.9 泛型
+    - 2.10 集合
+        - 2.10.1 List
+        - 2.10.2 Set
+        - 2.10.3 Map
+    - 2.11 异常处理
+    - 2.12 文件
+        - 2.12.1 Files
+        - 2.12.2 装饰器模式
+        - 2.12.3 文件流
+    - 2.13 枚举
+    - 2.14 注解
+    - 2.15 小结
 - 第三章：进阶教程
     - 3.1 密封类
     - 3.2 记录类
