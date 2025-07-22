@@ -18,27 +18,32 @@ weight: 3
 - [第一章：基础知识](https://squid233.github.io/java-tutorial/basic/)
     - [1.1 配置环境](https://squid233.github.io/java-tutorial/basic/setup/)
     - [1.2 JShell](https://squid233.github.io/java-tutorial/basic/jshell/)
-    - [1.3 数据类型](https://squid233.github.io/java-tutorial/basic/datatype/)
-    - 1.4 表达式
-        - [1.4.1 字面量](https://squid233.github.io/java-tutorial/basic/exp/literal/)
-        - [1.4.2 四则运算](https://squid233.github.io/java-tutorial/basic/exp/basic_operation/)
-        - [1.4.3 逻辑运算](https://squid233.github.io/java-tutorial/basic/exp/logic_operation/)
-        - [1.4.4 位运算](https://squid233.github.io/java-tutorial/basic/exp/bit_operation/)
-        - [1.4.5 字符串拼接](https://squid233.github.io/java-tutorial/basic/exp/string_concat/)
-    - [1.5 变量](https://squid233.github.io/java-tutorial/basic/variable/)
-    - [1.6 数组](https://squid233.github.io/java-tutorial/basic/array/)
-    - [1.7 方法](https://squid233.github.io/java-tutorial/basic/method/)
-    - [1.8 IDE](https://squid233.github.io/java-tutorial/basic/ide/)
-    - [1.9 源文件](https://squid233.github.io/java-tutorial/basic/source_file/)
-    - 1.10 流程控制
-        - [1.10.1 条件语句](https://squid233.github.io/java-tutorial/basic/control_flow/condition/)
-        - [1.10.2 选择语句](https://squid233.github.io/java-tutorial/basic/control_flow/switch/)
-        - [1.10.3 循环语句](https://squid233.github.io/java-tutorial/basic/control_flow/loop/)
-    - [1.11 小结](https://squid233.github.io/java-tutorial/basic/summary/)
-    - [1.12 章后练习](https://squid233.github.io/java-tutorial/basic/practice/)
+    - [1.3 字面量](https://squid233.github.io/java-tutorial/basic/literal/)
+    - 1.4 数据类型
+        - [1.4.1 整数类型](https://squid233.github.io/java-tutorial/basic/datatype/integer/)
+        - [1.4.2 字符类型](https://squid233.github.io/java-tutorial/basic/datatype/char/)
+        - [1.4.3 浮点数](https://squid233.github.io/java-tutorial/basic/datatype/floating_point/)
+        - [1.4.4 布尔类型](https://squid233.github.io/java-tutorial/basic/datatype/boolean/)
+        - [1.4.5 字符串](https://squid233.github.io/java-tutorial/basic/datatype/string/)
+    - 1.5 表达式
+        - [1.5.1 四则运算](https://squid233.github.io/java-tutorial/basic/exp/basic_operation/)
+        - [1.5.2 逻辑运算](https://squid233.github.io/java-tutorial/basic/exp/logic_operation/)
+        - [1.5.3 位运算](https://squid233.github.io/java-tutorial/basic/exp/bit_operation/)
+        - [1.5.4 字符串拼接](https://squid233.github.io/java-tutorial/basic/exp/string_concat/)
+    - [1.6 变量](https://squid233.github.io/java-tutorial/basic/variable/)
+    - [1.7 数组](https://squid233.github.io/java-tutorial/basic/array/)
+    - [1.8 方法](https://squid233.github.io/java-tutorial/basic/method/)
+    - [1.9 IDE](https://squid233.github.io/java-tutorial/basic/ide/)
+    - [1.10 源文件](https://squid233.github.io/java-tutorial/basic/source_file/)
+    - 1.11 流程控制
+        - [1.11.1 条件语句](https://squid233.github.io/java-tutorial/basic/control_flow/condition/)
+        - [1.11.2 选择语句](https://squid233.github.io/java-tutorial/basic/control_flow/switch/)
+        - [1.11.3 循环语句](https://squid233.github.io/java-tutorial/basic/control_flow/loop/)
+    - [1.12 小结](https://squid233.github.io/java-tutorial/basic/summary/)
+    - [1.13 章后练习](https://squid233.github.io/java-tutorial/basic/practice/)
 - [第二章：面向对象](https://squid233.github.io/java-tutorial/object/)
     - [2.1 包](https://squid233.github.io/java-tutorial/object/package/)
-    - 2.2 类
+    - [2.2 类](https://squid233.github.io/java-tutorial/object/class/)
     - 2.3 Scanner
     - 2.4 StringBuilder
     - 2.5 包装类型
